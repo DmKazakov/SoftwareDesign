@@ -11,7 +11,7 @@ import java.nio.file.Paths;
  * Class for emulation changing of process directory.
  */
 public class FileSystem {
-    private Path currentDirectory = Paths.get(".").toAbsolutePath().normalize();
+    private Path currentDirectory = Paths.get(System.getProperty("user.dir"));
 
     /**
      * Returns file resolved against current directory path.

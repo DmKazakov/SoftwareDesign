@@ -27,7 +27,6 @@ public class ExternalCommandTest {
         CommandResult kek = new ExternalCommand("echo", Collections.singletonList("text"))
                 .execute(Collections.emptyList());
         List<String> result = kek.getOutput();
-        assertNotEquals(CommandResult.ABORT, kek);
         assertEquals(1, result.size());
         assertEquals("text", result.get(0));
     }
