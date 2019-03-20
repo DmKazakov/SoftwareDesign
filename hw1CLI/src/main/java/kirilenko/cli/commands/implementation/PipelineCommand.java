@@ -5,6 +5,7 @@ import kirilenko.cli.commands.CommandResult;
 import kirilenko.cli.commands.AbstractCommand;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -42,7 +43,7 @@ public final class PipelineCommand extends AbstractCommand {
      * @throws CliException if any execution error occurred
      */
     @Override
-    public CommandResult execute(List<String> input) throws CliException {
+    public CommandResult execute(List<String> input) throws CliException, IOException {
         CommandResult first = left.execute(input);
         if (first.isAborted() || first.isExit()) {
             return first;

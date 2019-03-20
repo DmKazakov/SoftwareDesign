@@ -10,6 +10,7 @@ import kirilenko.cli.interpreter.substitutor.Substitutor;
 import kirilenko.cli.interpreter.substitutor.SubstitutorImpl;
 import kirilenko.cli.utils.FileIO;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
 import java.util.NoSuchElementException;
@@ -47,7 +48,7 @@ public class Main {
         }
     }
 
-    private static boolean execute(String input, OutputStream output) throws CliException {
+    private static boolean execute(String input, OutputStream output) throws CliException, IOException {
         AbstractCommand start = parser.parse(substitutor.substitute(input));
         CommandResult result = start.execute(Collections.emptyList());
         if (result.isExit()) {
