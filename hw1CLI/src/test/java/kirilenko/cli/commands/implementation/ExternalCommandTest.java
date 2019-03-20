@@ -25,7 +25,7 @@ public class ExternalCommandTest {
     public void testExternal() throws Exception {
         List<String> result = new ExternalCommand("echo", Collections.singletonList("text"))
                 .execute(Collections.emptyList()).getOutput();
-        System.out.println(result);
+        System.out.println("<" + result + ">");
         /*assertEquals(1, result.size());
         assertEquals("text", result.get(0));*/
     }
