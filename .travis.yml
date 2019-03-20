@@ -3,4 +3,4 @@ language: java
 before_install:
     - chmod +x hw1CLI/gradlew
     - cd hw1CLI
-    - ./gradlew build -i
+    - sudo ./gradlew build -i
