@@ -35,7 +35,7 @@ public class ExternalCommand extends AbstractCommand {
         try {
             String[] args = arguments.toArray(new String[0]);
             //Process commandProcess = Runtime.getRuntime().exec(args);
-            Process commandProcess = Runtime.getRuntime().exec(args, null, Environment.getCurrentDirectory().toFile());
+            Process commandProcess = new ProcessBuilder(args).directory(Environment.getCurrentDirectory().toFile()).start();
             FileIO.writeLines(input, commandProcess.getOutputStream());
             commandProcess.getOutputStream().close();
             return new CommandResult(FileIO.readLines(commandProcess.getInputStream()));
