@@ -38,7 +38,7 @@ public class ExternalCommand extends AbstractCommand {
             Process commandProcess = new ProcessBuilder(args).directory(Environment.getCurrentDirectory().toFile()).start();
             FileIO.writeLines(input, commandProcess.getOutputStream());
             commandProcess.getOutputStream().close();
-            return new CommandResult(FileIO.readLines(commandProcess.getErrorStream()));
+            return new CommandResult(FileIO.readLines(commandProcess.getInputStream()));
         } catch (IOException e) {
             CLILogger.INSTANCE.log_error("Error in external sub-process");
             return CommandResult.ABORT;

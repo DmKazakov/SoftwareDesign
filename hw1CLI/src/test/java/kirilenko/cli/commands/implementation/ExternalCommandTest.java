@@ -1,5 +1,6 @@
 package kirilenko.cli.commands.implementation;
 
+import kirilenko.cli.commands.CommandResult;
 import kirilenko.cli.utils.Environment;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,12 +24,11 @@ public class ExternalCommandTest {
      */
     @Test
     public void testExternal() throws Exception {
-        List<String> result = new ExternalCommand("echo", Collections.singletonList("text"))
-                .execute(Collections.emptyList()).getOutput();
-        if (result.size() != 0) {
-            throw new Exception(result.toString());
-        }
-        assertEquals(0, result.size());
-        //assertEquals("text", result.get(0));
+        CommandResult kek = new ExternalCommand("echo", Collections.singletonList("text"))
+                .execute(Collections.emptyList());
+        List<String> result = kek.getOutput();
+        assertNotEquals(CommandResult.ABORT, kek);
+        assertEquals(1, result.size());
+        assertEquals("text", result.get(0));
     }
 }
