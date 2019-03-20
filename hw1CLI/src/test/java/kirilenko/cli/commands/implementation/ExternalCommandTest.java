@@ -5,6 +5,7 @@ import kirilenko.cli.utils.Environment;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,8 +25,7 @@ public class ExternalCommandTest {
      */
     @Test
     public void testExternal() throws Exception {
-       new CdCommand(Collections.emptyList()).execute(Collections.emptyList());
-        CommandResult kek = new ExternalCommand("echo", Collections.singletonList("text"))
+        CommandResult kek = new ExternalCommand("sudo", Arrays.asList("echo", "text"))
                 .execute(Collections.emptyList());
         List<String> result = kek.getOutput();
         assertEquals(1, result.size());
