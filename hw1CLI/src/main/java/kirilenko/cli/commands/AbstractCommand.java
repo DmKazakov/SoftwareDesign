@@ -2,6 +2,7 @@ package kirilenko.cli.commands;
 
 import kirilenko.cli.exceptions.CliException;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -30,5 +31,5 @@ public abstract class AbstractCommand {
      * @return command execution result
      * @throws CliException if any error occurred
      */
-    public abstract CommandResult execute(List<String> input) throws CliException;
+    public abstract CommandResult execute(List<String> input) throws CliException, IOException;
 }

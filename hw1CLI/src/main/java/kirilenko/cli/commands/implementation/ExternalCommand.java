@@ -31,18 +31,18 @@ public class ExternalCommand extends AbstractCommand {
      * @throws CliException if error in sub-process occurred
      */
     @Override
-    public CommandResult execute(List<String> input) throws CliException {
-        try {
+    public CommandResult execute(List<String> input) throws CliException, IOException {
+        //try {
             String[] args = arguments.toArray(new String[0]);
             //Process commandProcess = Runtime.getRuntime().exec(args);
             Process commandProcess = new ProcessBuilder(args).directory(Environment.getCurrentDirectory().toFile()).start();
             FileIO.writeLines(input, commandProcess.getOutputStream());
             commandProcess.getOutputStream().close();
             return new CommandResult(FileIO.readLines(commandProcess.getInputStream()));
-        } catch (IOException e) {
+        /*} catch (IOException e) {
             CLILogger.INSTANCE.log_error("Error in external sub-process");
             return CommandResult.ABORT;
-        }
+        }*/
     }
 
     /**
