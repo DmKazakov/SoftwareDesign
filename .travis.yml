@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: java
 before_install:
     - chmod +x hw1CLI/gradlew
